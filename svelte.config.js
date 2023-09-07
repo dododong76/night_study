@@ -1,17 +1,12 @@
-import preprocess from "svelte-preprocess";
-import netlify from "@sveltejs/adapter-netlify"; //<--- 추가
+import adapter from "@sveltejs/adapter-netlify";
+import { vitePreprocess } from "@sveltejs/kit/vite";
 
-/** @type {import('@sveltejs/kit').Config} */
+/** @type { import('@sveltejs/kit').Config} */
 const config = {
-  // Consult https://github.com/sveltejs/svelte-preprocess
-  // for more information about preprocessors
-  preprocess: preprocess(),
-
   kit: {
-    adapter: netlify(), //<--- 추가
-    // hydrate the <div id="svelte"> element in src/app.html
-    target: "#svelte",
+    adapter: adapter(),
   },
+  preprocess: vitePreprocess(),
 };
 
 export default config;
